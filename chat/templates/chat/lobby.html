@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lobby</title>
+</head>
+<body>
+    <h1>Lobby</h1>
+
+<script type="text/javascript">
+    // Setting a JS socket in template.
+    let url = `ws://${window.location.host}/ws/socket-server/`;
+    const chatSocket = new WebSocket(url);
+    // Setting reaction when anything is received on the socket.
+    chatSocket.onmessage = function (e){
+        let data = JSON.parse(e.data);
+        console.log('Received: ', data);
+    }
+</script>
+</body>
+</html>
