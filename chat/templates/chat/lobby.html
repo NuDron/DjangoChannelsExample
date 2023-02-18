@@ -7,15 +7,30 @@
 <body>
     <h1>Lobby</h1>
 
-<script type="text/javascript">
-    // Setting a JS socket in template.
-    let url = `ws://${window.location.host}/ws/socket-server/`;
-    const chatSocket = new WebSocket(url);
-    // Setting reaction when anything is received on the socket.
-    chatSocket.onmessage = function (e){
-        let data = JSON.parse(e.data);
-        console.log('Received: ', data);
-    }
-</script>
+    <form id="form">
+        <input type="text" name="message">
+    </form>
+
+    <script type="text/javascript">
+        // Setting a JS socket in template.
+        let url = `ws://${window.location.host}/ws/socket-server/`;
+        const chatSocket = new WebSocket(url);
+        // Setting reaction when anything is received on the socket.
+        chatSocket.onmessage = function (e){
+            let data = JSON.parse(e.data);
+            console.log('Received: ', data);
+        }
+
+        let form = document.getElementById('form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent the default behaviour of form element.
+            let message = e.target.message.value; // Extract the value from form.
+            // Jsonify the message.
+            chatSocket.send(JSON.stringify({
+                'message': message,
+            }))
+            form.reset(); // Restore default form values.
+        })
+    </script>
 </body>
 </html>

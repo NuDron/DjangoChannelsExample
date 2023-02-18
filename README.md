@@ -1,6 +1,6 @@
 # DjangoChannelsExample
 PYTHON VERSION: 3.11.2
-Please note that I use DJANGO v4
+Please note that I use [DJANGO v4]
 
 # 1) Install Project
 
@@ -12,6 +12,11 @@ pip install -r requirements.txt
 To run the project as ASGI application:
 ```
 python -m uvicorn DjangoCore.asgi:application
+```
+
+HINT: In case that your Uvicorn development server tells you there's no WebSocket support try following:
+```
+pip install 'uvicorn[standard]'
 ```
 
 # 2) How to check if it works?
