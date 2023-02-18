@@ -1,5 +1,7 @@
 # DjangoChannelsExample
+
 PYTHON VERSION: 3.11.2
+
 Please note that I use [DJANGO v4]
 
 # 1) Install Project
