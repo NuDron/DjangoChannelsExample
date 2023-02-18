@@ -44,7 +44,13 @@ INSTALLED_APPS = [
 
 ASGI_APPLICATION = 'DjangoCore.asgi.application'
 
-# WSGI_APPLICATION = 'DjangoCore.wsgi.application'
+CHANNEL_LAYERS = {
+    'default': {
+        # For testing only. In production should use REDIS (or similar).
+        'BACKEND': 'channels.layers.InMemoryChannelLayer'
+    }
+}
+WSGI_APPLICATION = 'DjangoCore.wsgi.application'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
